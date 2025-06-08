@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { TaskList } from '../components/TaskList';
+import { TaskStats } from '../components/TaskStats';
 import { Task } from '../types/Task';
 
 export default function Page() {
@@ -37,6 +38,7 @@ export default function Page() {
     };
 
     const isButtonDisabled = !newTaskTitle.trim();
+    const completedTasksCount = tasks.filter(task => task.completed).length;
 
     return (
         <View style={styles.container}>
@@ -66,6 +68,10 @@ export default function Page() {
             >
                 <Text style={styles.buttonText}>Add Task</Text>
             </Pressable>
+            <TaskStats 
+                totalTasks={tasks.length}
+                completedTasks={completedTasksCount}
+            />
             <TaskList
                 tasks={tasks}
                 onDeleteTask={deleteTask}
