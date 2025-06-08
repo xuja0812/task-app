@@ -15,9 +15,16 @@ export function TaskList({ tasks, onDeleteTask, onToggleComplete }: TaskListProp
         return <Text>No tasks</Text>;
     }
 
+    const sortedTasks = [...tasks].sort((a,b) => {
+        if(a.completed === b.completed){
+            return b.createdAt.getTime() - a.createdAt.getTime();
+        }
+        return a.completed ? 1 : -1;
+    })
+
     return (
         <ScrollView>
-            {tasks.map((task) => (
+            {sortedTasks.map((task) => (
                 <TaskItem
                     key={task.id}
                     task={task}
