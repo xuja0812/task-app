@@ -50,50 +50,69 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'flex-start',
-        padding: 10,
-        borderBottomWidth: 1, // Line to separate tasks
-        borderBottomColor: '#000CCC',
+        padding: 16,
+        marginBottom: 8,
+        backgroundColor: '#ffffff', // white
+        borderRadius: 8,
+        shadowColor: '#000000', // black
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
     },
     containerCompleted: {
-        opacity: 0.6,
-        backgroundColor: '#f8f8f8',
+        opacity: 0.7,
+        backgroundColor: '#f8f9fa', // off white
     },
     taskContent: {
         flex: 1, 
-        marginRight: 10, 
+        marginRight: 12, 
     },
     taskText: {
         flexWrap: 'wrap', 
+        fontSize: 16,
+        color: '#24292f', // dark gray
+        fontWeight: '500',
     },
     taskTextCompleted: {
         textDecorationLine: 'line-through',
-        color: '#666',
+        color: '#656d76', // lighter gray
     },
     deleteButton: {
-        minWidth: 60, 
+        minWidth: 60,
+        backgroundColor: '#da3633', // bright red
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 6,
         alignItems: 'center',
+        justifyContent: 'center',
     },
     deleteText: {
-        color: '#FF0000', 
-        fontWeight: 'bold',
+        color: '#ffffff', // white
+        fontWeight: '600',
+        fontSize: 12,
     },
     descriptionText: {
-        color: '#666',
-        fontSize: 12,
-        marginTop: 2,
+        color: '#656d76', // lighter gray
+        fontSize: 14,
+        marginTop: 4,
         fontStyle: 'italic',
+        lineHeight: 20,
     },
     descriptionTextCompleted: {
         textDecorationLine: 'line-through',
-        color: '#999',
+        color: '#8c959f', // light gray
     },
     dateText: {
-        color: '#999',
-        fontSize: 10,
-        marginTop: 4,
+        color: '#8c959f', // light gray
+        fontSize: 12,
+        marginTop: 6,
     },
     dateTextCompleted: {
         textDecorationLine: 'line-through',
-        color: '#bbb',
+        color: '#a6a6a6', // lightest gray
     },
 });
