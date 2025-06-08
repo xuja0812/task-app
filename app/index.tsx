@@ -9,18 +9,21 @@ import { Task } from '../types/Task';
 export default function Page() {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [newTaskTitle, setNewTaskTitle] = useState('');
+    const [newTaskDescription, setNewTaskDescription] = useState('');
 
     const addTask = () => {
         if (!newTaskTitle.trim()) return;
         const newTask: Task = {
             id: uuidv4(),
             title: newTaskTitle.trim(),
+            description: newTaskDescription.trim() || undefined,
             completed: false,
             createdAt: new Date(),
         };
 
         setTasks([newTask, ...tasks]);
         setNewTaskTitle('');
+        setNewTaskDescription('');
     };
 
     const deleteTask = (taskId: string) => {
@@ -40,6 +43,14 @@ export default function Page() {
                 placeholder="Enter task..."
                 value={newTaskTitle}
                 onChangeText={setNewTaskTitle}
+                onSubmitEditing={addTask}
+                returnKeyType="done"
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Enter description (optional)..."
+                value={newTaskDescription}
+                onChangeText={setNewTaskDescription}
                 onSubmitEditing={addTask}
                 returnKeyType="done"
             />

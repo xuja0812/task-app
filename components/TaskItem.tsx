@@ -20,6 +20,12 @@ export function TaskItem({ task, onDeleteTask, onToggleComplete }: TaskItemProps
                 <Text style={styles.taskText}>
                     {task.completed ? '✓' : '○'} {task.title}
                 </Text>
+                {task.description && (
+                    <Text style={styles.descriptionText}>{task.description}</Text>
+                )}
+                <Text style={styles.dateText}>
+                    Created: {task.createdAt.toLocaleDateString()}
+                </Text>
             </Pressable>
             <Pressable 
                 style={styles.deleteButton}
@@ -53,5 +59,16 @@ const styles = StyleSheet.create({
     deleteText: {
         color: '#FF0000', 
         fontWeight: 'bold',
+    },
+    descriptionText: {
+        color: '#666',
+        fontSize: 12,
+        marginTop: 2,
+        fontStyle: 'italic',
+    },
+    dateText: {
+        color: '#999',
+        fontSize: 10,
+        marginTop: 4,
     },
 });
