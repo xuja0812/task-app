@@ -16,6 +16,9 @@ export function TaskItem({ task, onDeleteTask, onToggleComplete }: TaskItemProps
             <Pressable 
                 style={styles.taskContent}
                 onPress={() => onToggleComplete(task.id)}
+                accessibilityRole="button"
+                accessibilityLabel={`${task.completed ? 'Mark incomplete' : 'Mark complete'}: ${task.title}`}
+                accessibilityState={{ checked: task.completed }}
             >
                 <Text style={[
                     styles.taskText,
@@ -39,6 +42,9 @@ export function TaskItem({ task, onDeleteTask, onToggleComplete }: TaskItemProps
             <Pressable 
                 style={styles.deleteButton}
                 onPress={() => onDeleteTask(task.id)}
+                accessibilityRole="button"
+                accessibilityLabel={`Delete ${task.title}`}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
                 <Text style={styles.deleteText}>Delete</Text>
             </Pressable>
@@ -70,12 +76,14 @@ const styles = StyleSheet.create({
     taskContent: {
         flex: 1, 
         marginRight: 12, 
+        minHeight: 44, // minimum touch target
     },
     taskText: {
         flexWrap: 'wrap', 
         fontSize: 16,
         color: '#24292f', // dark gray
         fontWeight: '500',
+        lineHeight: 22,
     },
     taskTextCompleted: {
         textDecorationLine: 'line-through',
@@ -83,6 +91,7 @@ const styles = StyleSheet.create({
     },
     deleteButton: {
         minWidth: 60,
+        minHeight: 44, // minimum touch target
         backgroundColor: '#da3633', // bright red
         paddingHorizontal: 12,
         paddingVertical: 6,
