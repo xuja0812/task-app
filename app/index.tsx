@@ -45,6 +45,7 @@ export default function Page() {
             <TextInput
                 style={styles.input}
                 placeholder="Enter task..."
+                placeholderTextColor="grey"
                 value={newTaskTitle}
                 onChangeText={setNewTaskTitle}
                 onSubmitEditing={addTask}
@@ -53,6 +54,7 @@ export default function Page() {
             <TextInput
                 style={styles.input}
                 placeholder="Enter description (optional)..."
+                placeholderTextColor="grey"
                 value={newTaskDescription}
                 onChangeText={setNewTaskDescription}
                 onSubmitEditing={addTask}
