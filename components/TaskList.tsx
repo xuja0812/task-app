@@ -25,13 +25,6 @@ export function TaskList({ tasks, onDeleteTask, onToggleComplete }: TaskListProp
         );
     }
 
-    const sortedTasks = [...tasks].sort((a,b) => {
-        if(a.completed === b.completed){
-            return b.createdAt.getTime() - a.createdAt.getTime();
-        }
-        return a.completed ? 1 : -1;
-    })
-
     return (
         <ScrollView 
             style={styles.scrollView}
@@ -40,7 +33,7 @@ export function TaskList({ tasks, onDeleteTask, onToggleComplete }: TaskListProp
             accessibilityRole="list"
             accessibilityLabel={`Task list with ${tasks.length} ${tasks.length === 1 ? 'task' : 'tasks'}`}
         >
-            {sortedTasks.map((task) => (
+            {tasks.map((task) => (
                 <TaskItem
                     key={task.id}
                     task={task}
