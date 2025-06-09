@@ -8,10 +8,6 @@ interface TaskStatsProps {
 }
 
 export function TaskStats({ totalTasks, completedTasks }: TaskStatsProps) {
-    if (totalTasks === 0) {
-        return null;
-    }
-
     const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
     const pendingTasks = totalTasks - completedTasks;
 
