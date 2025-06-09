@@ -2,6 +2,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Task } from '../types/Task';
+import { formatTaskDate } from '../utils/dateFormatting';
 
 interface TaskItemProps {
     task: Task;
@@ -36,7 +37,7 @@ export function TaskItem({ task, onDeleteTask, onToggleComplete }: TaskItemProps
                     styles.dateText,
                     task.completed && styles.dateTextCompleted
                 ]}>
-                    Created: {task.createdAt.toLocaleDateString()}
+                    Created: {formatTaskDate(task.createdAt)}
                 </Text>
             </Pressable>
             <Pressable 
