@@ -17,9 +17,10 @@ export function TaskItem({ task, onDeleteTask, onToggleComplete }: TaskItemProps
             <Pressable 
                 style={styles.taskContent}
                 onPress={() => onToggleComplete(task.id)}
-                accessibilityRole="button"
+                accessibilityRole="checkbox"
                 accessibilityLabel={`${task.completed ? 'Mark incomplete' : 'Mark complete'}: ${task.title}`}
                 accessibilityState={{ checked: task.completed }}
+                android_ripple={{ color: 'rgba(0, 0, 0, 0.1)' }}  
             >
                 <Text style={[
                     styles.taskText,
