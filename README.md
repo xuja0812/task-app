@@ -1,4 +1,6 @@
-# Welcome to your Expo app 👋
+# Welcome to my task app! 👋
+
+A simple to-do app that allows users to add tasks, check them off, and delete them.
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
@@ -23,28 +25,32 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Features
 
-## Get a fresh project
+This task management app provides a simple and intuitive interface for organizing daily tasks. It's built with React Native's core components.
 
-When you're ready, run:
+### Core Features
+- **Add Tasks**: Create new tasks with titles and optional descriptions
+- **Mark Complete**: Toggle tasks between completed and pending states
+- **Delete Tasks**: Remove tasks you no longer need
 
-```bash
-npm run reset-project
-```
+### User Interface
+- Clean, minimalist design using React Native's built-in components
+- Responsive layout that works on both iOS and Android
+- Visual indicators for completed vs. pending tasks
+- Intuitive touch interactions for task management
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Third-Party Libraries
 
-## Learn more
+The app uses minimal external dependencies:
 
-To learn more about developing your project with Expo, look at the following resources:
+- **uuid** (`uuid`): Generates unique identifiers for each task to ensure proper state management and avoid conflicts
+- **react-native-get-random-values**: Provides secure random number generation required by the uuid library in React Native environments
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Usage Instructions
 
-## Join the community
+1. **Adding a Task**: Tap the "Add Task" button below the text input fields to create a new task after adding a title. You can add both a title and description.
 
-Join our community of developers creating universal apps.
+2. **Completing Tasks**: Tap on a task to mark it as done. Completed tasks will be crossed out and darker than pending ones.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+3. **Deleting Tasks**: Tap the delete button to remove tasks permanently.
