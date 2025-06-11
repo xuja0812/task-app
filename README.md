@@ -39,6 +39,8 @@ This task management app provides a simple and intuitive interface for organizin
 - Responsive layout that works on both iOS and Android
 - Visual indicators for completed vs. pending tasks
 - Intuitive touch interactions for task management
+- Timestamp showing relative time (e.g. "Today", "3 days ago") for each task's creation
+- Progress bar to reflect what percentage of tasks are complete vs. pending
 
 ## Third-Party Libraries
 
