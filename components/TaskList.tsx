@@ -10,7 +10,12 @@ interface TaskListProps {
     onToggleComplete: (taskId: string) => void;
 }
 
+/**
+ * Task list component.
+ * Implements accessibility best practices.
+ */
 export function TaskList({ tasks, onDeleteTask, onToggleComplete }: TaskListProps) {
+    {/* If there's no tasks, encourage the user to add one */}
     if (tasks.length === 0) {
         return (
             <View style={styles.emptyContainer}>
@@ -33,6 +38,7 @@ export function TaskList({ tasks, onDeleteTask, onToggleComplete }: TaskListProp
             accessibilityRole="list"
             accessibilityLabel={`Task list with ${tasks.length} ${tasks.length === 1 ? 'task' : 'tasks'}`}
         >
+            {/* Render each task with the same delete/complete functionality */}
             {tasks.map((task) => (
                 <TaskItem
                     key={task.id}
@@ -46,12 +52,15 @@ export function TaskList({ tasks, onDeleteTask, onToggleComplete }: TaskListProp
 }
 
 const styles = StyleSheet.create({
+    // Main container that's scrollable as the task list grows
     scrollView: {
         flex: 1,
     },
+    // Content container with bottom padding to prevent last item from being cut off
     contentContainer: {
         paddingBottom: 20,
     },
+    // Empty state container centered both horizontally and vertically
     emptyContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -59,9 +68,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 40,
     },
+    // Empty state text with muted color to signal inactivity
     emptyText: {
         fontSize: 16,
-        color: '#656d76', // gray
+        color: '#656d76', 
         textAlign: 'center',
         fontStyle: 'italic',
         lineHeight: 24,

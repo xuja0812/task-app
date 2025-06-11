@@ -7,6 +7,10 @@ import { TaskList } from '../components/TaskList';
 import { TaskStats } from '../components/TaskStats';
 import { Task } from '../types/Task';
 
+/**
+ * Main application screen managing task creation and state.
+ * Handles form input, task operations, and coordinates child components.
+ */
 export default function Page() {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [newTaskTitle, setNewTaskTitle] = useState('');
@@ -17,11 +21,12 @@ export default function Page() {
         const newTask: Task = {
             id: uuidv4(),
             title: newTaskTitle.trim(),
-            description: newTaskDescription.trim() || undefined,
+            description: newTaskDescription.trim() || undefined, // Only store description if provided
             completed: false,
             createdAt: new Date(),
         };
 
+        // Prepend new task to show most recent additions at top
         setTasks([newTask, ...tasks]);
         setNewTaskTitle('');
         setNewTaskDescription('');
@@ -37,11 +42,13 @@ export default function Page() {
         ));
     };
 
+    // Prevent accidental empty task creation
     const isButtonDisabled = !newTaskTitle.trim();
     const completedTasksCount = tasks.filter(task => task.completed).length;
 
     return (
         <View style={styles.container}>
+            {/* Primary input for task title (required field) */}
             <TextInput
                 style={styles.input}
                 placeholder="Enter task..."
@@ -51,6 +58,7 @@ export default function Page() {
                 onSubmitEditing={addTask}
                 returnKeyType="done"
             />
+            {/* Secondary input for optional description */}
             <TextInput
                 style={styles.input}
                 placeholder="Enter description (optional)..."
@@ -60,6 +68,7 @@ export default function Page() {
                 onSubmitEditing={addTask}
                 returnKeyType="done"
             />
+            {/* Add button with disabled state for better UX */}
             <Pressable 
                 style={[
                     styles.button,
@@ -70,10 +79,12 @@ export default function Page() {
             >
                 <Text style={styles.buttonText}>Add Task</Text>
             </Pressable>
+            {/* Progress overview component */}
             <TaskStats 
                 totalTasks={tasks.length}
                 completedTasks={completedTasksCount}
             />
+            {/* Main task list with prop forwarding */}
             <TaskList
                 tasks={tasks}
                 onDeleteTask={deleteTask}
@@ -87,17 +98,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#f8f9fa', // off white
+        backgroundColor: '#f8f9fa', 
     },
+    // Input styling consistent with card design system
     input: {
         borderWidth: 1,
-        borderColor: '#d0d7de', // navy
-        backgroundColor: '#ffffff', // white
+        borderColor: '#d0d7de', 
+        backgroundColor: '#ffffff', 
         padding: 12,
         marginBottom: 12,
         borderRadius: 8,
         fontSize: 16,
-        shadowColor: '#000000', // black
+        shadowColor: '#000000', 
         shadowOffset: {
             width: 0,
             height: 1,
@@ -106,13 +118,14 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 2,
     },
+    // Primary action button with accessibility-friendly minimum height
     button: {
-        backgroundColor: '#0969da', // light blue (slightly darker)
+        backgroundColor: '#0969da', 
         padding: 14,
         alignItems: 'center',
         marginBottom: 20,
         borderRadius: 8,
-        shadowColor: '#000000', // black
+        shadowColor: '#000000', 
         shadowOffset: {
             width: 0,
             height: 2,
@@ -123,13 +136,14 @@ const styles = StyleSheet.create({
         minHeight: 48,
         justifyContent: 'center',
     },
+    // Disabled button state removes elevation and uses muted color
     buttonDisabled: {
-        backgroundColor: '#8c959f', // gray
+        backgroundColor: '#8c959f', 
         shadowOpacity: 0,
         elevation: 0,
     },
     buttonText: {
-        color: '#ffffff', // white
+        color: '#ffffff', 
         fontSize: 16,
         fontWeight: '600',
         marginLeft: 8,
